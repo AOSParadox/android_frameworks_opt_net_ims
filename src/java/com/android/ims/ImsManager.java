@@ -71,6 +71,7 @@ public class ImsManager {
     public static final int PROPERTY_DBG_WFC_AVAIL_OVERRIDE_DEFAULT = 0;
     public static final String PROPERTY_DBG_ALLOW_IMS_OFF_OVERRIDE = "persist.dbg.allow_ims_off";
     public static final int PROPERTY_DBG_ALLOW_IMS_OFF_OVERRIDE_DEFAULT = 0;
+    public static final String PROPERTY_VOLTE_CALL_CAPABLE = "net.lte.volte_call_capable";
 
     /**
      * For accessing the IMS related service.
@@ -281,6 +282,24 @@ public class ImsManager {
                 && getBooleanCarrierConfig(context,
                         CarrierConfigManager.KEY_CARRIER_VOLTE_AVAILABLE_BOOL)
                 && isGbaValid(context);
+    }
+
+    /**
+     * Indicates whether Volte call capable.
+     */
+    public static boolean isVolteCallCapable() {
+        boolean isVolteCallCapable = SystemProperties.getBoolean(PROPERTY_VOLTE_CALL_CAPABLE, false);
+        if (DBG) log("isVolteCallCapable: " + isVolteCallCapable);
+
+        return isVolteCallCapable;
+    }
+
+    /**
+     * Sets property to indicate whether Volte call is capable.
+     */
+    public static void setVolteCallCapability(boolean enabled) {
+        if (DBG) log("setVolteCallCapability: " + enabled);
+        SystemProperties.set(PROPERTY_VOLTE_CALL_CAPABLE, Boolean.toString(enabled));
     }
 
     /**
