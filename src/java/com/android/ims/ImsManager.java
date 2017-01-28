@@ -1481,7 +1481,7 @@ public class ImsManager {
         }
     }
 
-    private void setAdvanced4GMode(boolean turnOn) throws ImsException {
+    public void setAdvanced4GMode(boolean turnOn) throws ImsException {
         checkAndThrowExceptionIfServiceUnavailable();
 
         // if turnOn: first set feature values then call turnOnIms()
